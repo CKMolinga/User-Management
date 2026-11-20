@@ -1,0 +1,153 @@
+
+extends layout
+
+block content
+
+  .w3-container
+    h2 Update User
+    p Modify the user's information below.
+
+    // Display error message if one exists
+    if error
+      .w3-panel.w3-pale-red.w3-leftbar.w3-border-red
+        p= error
+
+    // User update form
+    .w3-card.w3-white.w3-padding
+      form(method='POST', action='/users/' + user._id + '/edit')
+
+        // Personal Information
+        h3 Personal Information
+
+        .w3-row-padding
+          .w3-half
+            label(for='lastName') Last Name *
+            input#lastName.w3-input.w3-border(
+              type='text',
+              name='lastName',
+              value=user.lastName,
+              required
+            )
+
+          .w3-half
+            label(for='firstName') First Name *
+            input#firstName.w3-input.w3-border(
+              type='text',
+              name='firstName',
+              value=user.firstName,
+              required
+            )
+
+        .w3-row-padding
+          .w3-half
+            label(for='dateOfBirth') Date of Birth *
+            input#dateOfBirth.w3-input.w3-border(
+              type='date',
+              name='dateOfBirth',
+              value=user.dateOfBirth.toISOString().split('T')[0],
+              required
+            )
+
+        // Contact Information
+        h3 Contact Information
+
+        .w3-row-padding
+          .w3-half
+            label(for='phoneNumber') Phone Number *
+            input#phoneNumber.w3-input.w3-border(
+              type='tel',
+              name='phoneNumber',
+              value=user.phoneNumber,
+              required
+            )
+
+          .w3-half
+            label(for='email') Email Address *
+            input#email.w3-input.w3-border(
+              type='email',
+              name='email',
+              value=user.email,
+              required
+            )
+
+        // Residential Address
+        h3 Residential Address
+
+        .w3-row-padding
+          .w3-half
+            label(for='address1') Address Line 1 *
+            input#address1.w3-input.w3-border(
+              type='text',
+              name='address1',
+              value=user.address1,
+              required
+            )
+
+          .w3-half
+            label(for='address2') Address Line 2
+            input#address2.w3-input.w3-border(
+              type='text',
+              name='address2',
+              value=user.address2
+            )
+
+        .w3-row-padding
+          .w3-third
+            label(for='city') City *
+            input#city.w3-input.w3-border(
+              type='text',
+              name='city',
+              value=user.city,
+              required
+            )
+
+          .w3-third
+            label(for='postalCode') Postal Code *
+            input#postalCode.w3-input.w3-border(
+              type='text',
+              name='postalCode',
+              value=user.postalCode,
+              required
+            )
+
+          .w3-third
+            label(for='country') Country *
+            input#country.w3-input.w3-border(
+              type='text',
+              name='country',
+              value=user.country,
+              required
+            )
+
+        // Additional Information
+        h3 Additional Information
+
+        .w3-row-padding
+          .w3-col.s12
+            label(for='userNotes') User Notes
+            textarea#userNotes.w3-input.w3-border(
+              name='userNotes',
+              rows='4',
+              placeholder='Enter any additional information...'
+            )= user.userNotes
+
+        // Update and Cancel buttons
+        .w3-margin-top
+          button.w3-button.w3-green.w3-round(type='submit')
+            | Update User
+
+          a.w3-button.w3-grey.w3-round(href='/users')
+            | Cancel
+
+      // Delete user form
+      hr
+      h3.w3-text-red Delete User
+      p Deleting this user will permanently remove their record.
+
+      form(
+        method='POST',
+        action='/users/' + user._id + '/delete',
+        onsubmit="return confirm('Are you sure you want to delete this user?');"
+      )
+        button.w3-button.w3-red.w3-round(type='submit')
+          | Delete User

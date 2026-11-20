@@ -1,0 +1,135 @@
+
+extends layout
+
+block content
+
+  .w3-container
+    h2 Add New User
+    p Enter the user's information in the form below.
+
+    // Display error message if one exists
+    if error
+      .w3-panel.w3-pale-red.w3-leftbar.w3-border-red
+        p= error
+
+    // User registration form
+    .w3-card.w3-white.w3-padding
+      form(method='POST', action='/users/add')
+
+        // Personal Information
+        h3 Personal Information
+
+        .w3-row-padding
+          .w3-half
+            label(for='lastName') Last Name *
+            input#lastName.w3-input.w3-border(
+              type='text',
+              name='lastName',
+              required
+            )
+
+          .w3-half
+            label(for='firstName') First Name *
+            input#firstName.w3-input.w3-border(
+              type='text',
+              name='firstName',
+              required
+            )
+
+        .w3-row-padding
+          .w3-half
+            label(for='dateOfBirth') Date of Birth *
+            input#dateOfBirth.w3-input.w3-border(
+              type='date',
+              name='dateOfBirth',
+              required
+            )
+
+        // Contact Information
+        h3 Contact Information
+
+        .w3-row-padding
+          .w3-half
+            label(for='phoneNumber') Phone Number *
+            input#phoneNumber.w3-input.w3-border(
+              type='tel',
+              name='phoneNumber',
+              placeholder='e.g. 519-555-1234',
+              required
+            )
+
+          .w3-half
+            label(for='email') Email Address *
+            input#email.w3-input.w3-border(
+              type='email',
+              name='email',
+              placeholder='example@email.com',
+              required
+            )
+
+        // Residential Address
+        h3 Residential Address
+
+        .w3-row-padding
+          .w3-half
+            label(for='address1') Address Line 1 *
+            input#address1.w3-input.w3-border(
+              type='text',
+              name='address1',
+              required
+            )
+
+          .w3-half
+            label(for='address2') Address Line 2
+            input#address2.w3-input.w3-border(
+              type='text',
+              name='address2'
+            )
+
+        .w3-row-padding
+          .w3-third
+            label(for='city') City *
+            input#city.w3-input.w3-border(
+              type='text',
+              name='city',
+              required
+            )
+
+          .w3-third
+            label(for='postalCode') Postal Code *
+            input#postalCode.w3-input.w3-border(
+              type='text',
+              name='postalCode',
+              required
+            )
+
+          .w3-third
+            label(for='country') Country *
+            input#country.w3-input.w3-border(
+              type='text',
+              name='country',
+              required
+            )
+
+        // Additional Information
+        h3 Additional Information
+
+        .w3-row-padding
+          .w3-col.s12
+            label(for='userNotes') User Notes
+            textarea#userNotes.w3-input.w3-border(
+              name='userNotes',
+              rows='4',
+              placeholder='Enter any additional information...'
+            )
+
+        // Form buttons
+        .w3-margin-top
+          button.w3-button.w3-green.w3-round(type='submit')
+            | Save User
+
+          a.w3-button.w3-grey.w3-round(href='/users')
+            | Cancel
+
+      p.w3-small.w3-text-grey
+        | * Required fields

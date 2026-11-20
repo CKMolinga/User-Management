@@ -1,0 +1,38 @@
+/* Main page styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Main content area */
+main {
+  padding-bottom: 40px;
+}
+
+/* Page headings */
+h1,
+h2 {
+  color: #333333;
+}
+
+/* Form field spacing */
+.w3-input,
+.w3-select {
+  margin-bottom: 12px;
+}
+
+/* Table styling */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  text-align: left;
+  padding: 10px;
+}
+
+/* Notes field */
+textarea {
+  resize: vertical;
+}

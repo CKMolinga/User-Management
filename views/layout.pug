@@ -1,0 +1,27 @@
+
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+    // Page title
+    title= title || 'User Management System'
+
+    // W3.CSS framework
+    link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+
+    // Custom stylesheet
+    link(rel='stylesheet', href='/css/style.css')
+
+  body.w3-light-grey
+
+    // Navigation bar
+    nav.w3-bar.w3-dark-grey
+      a.w3-bar-item.w3-button(href='/users') User Management System
+      a.w3-bar-item.w3-button(href='/users') View Users
+      a.w3-bar-item.w3-button(href='/users/add') Add User
+
+    // Main page content
+    main.w3-content(style='max-width:1200px; margin-top:30px;')
+      block content

@@ -1,0 +1,61 @@
+
+extends layout
+
+block content
+
+  // Page heading
+  .w3-container
+    h2 User Management
+    p View and manage registered users.
+
+    // Add User button
+    a.w3-button.w3-blue.w3-round(href='/users/add')
+      | + Add New User
+
+  // Success message
+  if message
+    .w3-panel.w3-pale-green.w3-leftbar.w3-border-green
+      p= message
+
+  // Error message
+  if error
+    .w3-panel.w3-pale-red.w3-leftbar.w3-border-red
+      p= error
+
+  // Users table
+  .w3-container.w3-white.w3-card.w3-margin-top
+    h3 Registered Users
+
+    if users.length > 0
+
+      .w3-responsive
+        table.w3-table-all.user-table
+          thead
+            tr.w3-dark-grey
+              th Last Name
+              th First Name
+              th Date of Birth
+              th Email
+              th Phone Number
+              th City
+              th Actions
+
+          tbody
+            each user in users
+              tr
+                td= user.lastName
+                td= user.firstName
+                td= user.dateOfBirth.toISOString().split('T')[0]
+                td= user.email
+                td= user.phoneNumber
+                td= user.city
+
+                td
+                  a.w3-button.w3-small.w3-blue.w3-round(
+                    href='/users/' + user._id + '/edit'
+                  ) Edit
+
+    else
+      .w3-panel.w3-pale-yellow
+        p No users have been registered yet.
+        p Select "Add New User" to create your first record.
